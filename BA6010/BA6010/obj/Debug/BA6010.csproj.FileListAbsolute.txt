@@ -1,0 +1,14 @@
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\bin\Debug\BA6010.exe.config
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\bin\Debug\BA6010.exe
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\bin\Debug\BA6010.pdb
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\Interop.VBIDE.dll
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.csproj.ResolveComReference.cache
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.Properties.Resources.resources
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.csproj.GenerateResource.cache
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.csproj.CoreCompileInputs.cache
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.exe
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.pdb
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.csprojAssemblyReference.cache
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.Form1.resources
