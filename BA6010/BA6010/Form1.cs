@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Configuration;
+using System.Media;
 using System.IO.Ports;
 using Microsoft.Office.Interop.Excel;
 using System.Reflection;
@@ -37,8 +38,8 @@ namespace BA6010
             bool _openserial = true;
             InitializeComponent();
 
-            /*Init(_port);
-            Open(out _openserial);*/
+            Init(_port);
+            Open(out _openserial);
         }
 
         public void Init(ConfigSerialPort oConfig)
@@ -167,7 +168,7 @@ namespace BA6010
 
             WriteSerial(sCommand);
 
-            ReadSerial(dTimeout, "", "\r\n", out sBufferRead, true);
+            ReadSerial(dTimeout, out sBufferRead);
         }
         private void ReadSerial(Double dTimeOut, String sPrefix, String sSuffix, out String sBufferRead, Boolean bStopReadWhenSuffixFind)
         {
@@ -280,26 +281,31 @@ namespace BA6010
         private void Button1_Click(object sender, EventArgs e)
         {
             //m_Serial.DataReceived += serialPort1_DataReceived;
-            /*string value1 = "";
-            string value2 = "";
+            string value = "";
+      
             double voltage, impedance;
+            byte[] data = new byte[] {};
+            char[] arr = new char[1024];
 
-            QueryCom("*IDN?", 200, out value1);
-            textBox1.Text = Convert.ToString(voltagevalue);
+            QueryCom("FETCh?\n", 100000, out value);
+            string[] val = value.Split(',');
+            
+            double val1_textbox = Math.Round(Convert.ToDouble(val[1]),2);
+            double val2_textbox = Math.Round(Convert.ToDouble(val[0]),2);
+
+
+            textBox1.Text = Convert.ToString(Convert.ToString(val1_textbox));
+            textBox2.Text = Convert.ToString(Convert.ToString(val2_textbox));
             ClearSerial();
-            QueryCom("FUNCtion:IMPedance R", 1000, out value2);
-            textBox2.Text = Convert.ToString(impedancevalue);
-            ClearSerial();
-            voltage = Convert.ToDouble(value1);
-            impedance = Convert.ToDouble(value2);
-            comparing(voltage, impedance);*/
+
+            comparing(val1_textbox, val2_textbox);
             // example
-            voltagevalue = 3.7;
+            /*voltagevalue = 3.7;
             impedancevalue = 1.2;
             textBox1.Text = Convert.ToString(voltagevalue);
             textBox2.Text = Convert.ToString(impedancevalue);
             System.Threading.Thread.Sleep(500);
-            comparing(voltagevalue, impedancevalue);
+            comparing(voltagevalue, impedancevalue);*/
             ReadExistingExcel();
         }
 
@@ -309,11 +315,11 @@ namespace BA6010
         public string result = "";
         private void comparing(in double voltage, in double impedance)
         {
-            // on compare entre 3.6 et 4 V pour la tension
-            // on compare entre 1 et 2 ohm
-            if (voltagevalue >= 3.60 && voltagevalue <= 4.10)
+            // on compare entre 1.3 et 1.4 V pour la tension
+            // on compare entre 0.01 et 0.03 mohm
+            if (voltage >= 1.3 && voltage <= 1.4)
             {
-                if (impedancevalue >= 1 && impedancevalue <= 2)
+                if (impedance >= 0.01 && impedance <= 0.03)
                 {
                     pictureBox1.Image = new Bitmap(@"C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\vert.PNG");
                     result = "PASS";
@@ -322,12 +328,16 @@ namespace BA6010
                 {
                     pictureBox1.Image = new Bitmap(@"C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\rouge.PNG");
                     result = "FAILED";
+                    SystemSounds.Beep.Play();
                 }  
             }
             else
             {
                 pictureBox1.Image = new Bitmap(@"C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\rouge.PNG");
                 result = "FAILED";
+                SystemSounds.Beep.Play();
+                SystemSounds.Beep.Play();
+                SystemSounds.Beep.Play();
             }
         }
 
@@ -356,9 +366,10 @@ namespace BA6010
 
             // Appending to test result file
             mWSheet1.Cells[rowCount+1, 1] = DateTime.Now.ToString();
-            mWSheet1.Cells[rowCount+1, 2] = voltagevalue;
-            mWSheet1.Cells[rowCount+1, 3] = impedancevalue;
-            mWSheet1.Cells[rowCount+1, 4] = result;
+            mWSheet1.Cells[rowCount + 1, 2] = textBox3.Text.ToString();
+            mWSheet1.Cells[rowCount+1, 3] = textBox1.Text.ToString();
+            mWSheet1.Cells[rowCount+1, 4] = textBox2.Text.ToString();
+            mWSheet1.Cells[rowCount+1, 5] = result;
 
             mWorkBook.SaveAs(path, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
             false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
@@ -374,5 +385,14 @@ namespace BA6010
             GC.Collect();
         }
 
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

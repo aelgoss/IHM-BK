@@ -11,13 +11,13 @@ namespace BA6010
     public class ConfigSerialPort
     {
         /// <summary>   Name of the port. </summary>
-        public string sPortName = "COM9";
+        public string sPortName = "COM6";
         /// <summary>   Zero-based index of the baud rate. </summary>
         public int iBaudRate = 9600;
         /// <summary>   Zero-based index of the data bits. </summary>
         public int iDataBits = 8;
         /// <summary>   The parity. </summary>
-        public Parity eParity = Parity.Odd;
+        public Parity eParity = Parity.None;
         /// <summary>   The stop bits. </summary>
         public StopBits eStopBits = StopBits.One;
         /// <summary>   Size of the read buffer. </summary>
@@ -29,8 +29,8 @@ namespace BA6010
         /// <summary>   true if RTS enable. </summary>
         public bool bRtsEnable = false;
         /// <summary>   Zero-based index of the read time out. </summary>
-        public int iReadTimeOut = 1000;
+        public int iReadTimeOut = 2000;
         /// <summary>   Zero-based index of the write time out. </summary>
-        public int iWriteTimeOut = 1000;
+        public int iWriteTimeOut = 1200;
     }
 }

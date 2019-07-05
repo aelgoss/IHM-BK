@@ -12,3 +12,4 @@ C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.exe
 C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.pdb
 C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.csprojAssemblyReference.cache
 C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\BA6010.Form1.resources
+C:\Users\ayoubexo.CEBONGROUP\source\repos\BA6010\BA6010\obj\Debug\Interop.mscoree.dll
